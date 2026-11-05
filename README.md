@@ -42,13 +42,13 @@ I write analysis software for thin-film solar cells, mostly perovskite and organ
 </p>
 </details>
 
-#### Last 12 months
+#### Activity
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/activity-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/activity-light.svg">
-    <img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/activity-light.svg" width="100%" alt="Contributions per day over the last 12 months, drawn as a stick spectrum">
+    <img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/activity-light.svg" width="100%" alt="The last 26 weeks of contributions as a dot-matrix calendar, above a stick spectrum on the same time axis">
   </picture>
 </p>
 

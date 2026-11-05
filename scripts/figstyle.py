@@ -41,10 +41,10 @@ def path(points, stroke, width=1.2, fill="none", extra=""):
     return f'<path d="{d}" fill="{fill}" stroke="{stroke}" stroke-width="{width}" stroke-linejoin="round" {extra}/>'
 
 
-def document(w, h, theme, body, label):
+def document(w, h, theme, body, label, style=""):
     return (
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" role="img" aria-label="{escape(label)}">'
-        f'<style>text{{font-family:{FONT}}}</style><rect width="{w}" height="{h}" fill="{theme["bg"]}"/>{body}</svg>\n'
+        f'<style>text{{font-family:{FONT}}}{style}</style><rect width="{w}" height="{h}" fill="{theme["bg"]}"/>{body}</svg>\n'
     )
 
 
