@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340" role="img" aria-label="Solution Preparation Calculator: Turns ABX3 compositions and donor:acceptor blends into the masses you weigh and the volumes you pipette.">
+<style>
+text{font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace}
+.kick{font-size:13px;fill:#A88034;letter-spacing:1.4px}
+.name{font-weight:700;fill:#FFB000}
+.desc{font-size:15px;fill:#E8DCC0}
+.tag{font-size:12.5px;fill:#A88034;letter-spacing:.6px}
+.lab{font-size:13px;font-weight:700;fill:#FFB000}
+.val{font-size:15px;fill:#E8DCC0}
+.ax{font-size:11.5px;fill:#A88034}
+.trace{fill:none;stroke:#FFB000;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.ghost{fill:none;stroke:#FFB000;stroke-width:5;opacity:.4;filter:url(#glow)}
+.teal{fill:none;stroke:#4FD1C5;stroke-width:1.2}
+.dimline{fill:none;stroke:#A88034;stroke-width:1.2}
+.cover{fill:#0C0B08;transform:translateX(552px);animation:sweep 11s linear infinite}
+.beam{stroke:#FFECBE;stroke-width:1.6;opacity:0;animation:beam 11s linear infinite}
+.spin{animation:spin 7s linear infinite}
+.pulse{animation:pulse 2.4s ease-in-out infinite}
+@keyframes sweep{0%{transform:translateX(0)}32%,100%{transform:translateX(552px)}}
+@keyframes beam{0%{transform:translateX(0);opacity:1}32%{transform:translateX(552px);opacity:1}32.01%,100%{transform:translateX(552px);opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.cover,.beam,.spin,.pulse{animation:none}}
+</style>
+<defs><filter id="glow" x="-5%" y="-20%" width="110%" height="140%"><feGaussianBlur stdDeviation="3"/></filter>
+<clipPath id="plot"><rect x="24" y="70" width="552" height="162"/></clipPath></defs>
+<rect x="1" y="1" width="598" height="338" rx="14" fill="#0C0B08" stroke="#2E2818" stroke-width="2"/>
+<text x="24.0" y="30.0" class="kick" text-anchor="start" >SOLUTION PROCESSING</text><text x="576.0" y="30.0" class="kick" text-anchor="end" >PYTHON STDLIB</text>
+<text x="24" y="58" class="name" font-size="23">Solution Preparation Calculator</text>
+<g clip-path="url(#plot)">
+<g><path d="M118.0 154.0 L42.0 192.0" stroke="#A88034" stroke-width="1.2"/><path d="M118.0 154.0 L118.0 70.0" stroke="#A88034" stroke-width="1.2"/><path d="M118.0 154.0 L194.0 192.0" stroke="#A88034" stroke-width="1.2"/><path d="M42.0 192.0 L42.0 108.0" stroke="#A88034" stroke-width="1.2"/><path d="M42.0 192.0 L118.0 230.0" stroke="#A88034" stroke-width="1.2"/><path d="M118.0 70.0 L42.0 108.0" stroke="#A88034" stroke-width="1.2"/><path d="M118.0 70.0 L194.0 108.0" stroke="#A88034" stroke-width="1.2"/><path d="M42.0 108.0 L118.0 146.0" stroke="#A88034" stroke-width="1.2"/><path d="M194.0 192.0 L118.0 230.0" stroke="#A88034" stroke-width="1.2"/><path d="M194.0 192.0 L194.0 108.0" stroke="#A88034" stroke-width="1.2"/><path d="M118.0 230.0 L118.0 146.0" stroke="#A88034" stroke-width="1.2"/><path d="M194.0 108.0 L118.0 146.0" stroke="#A88034" stroke-width="1.2"/><path d="M156.0 169.0 L118.0 108.0" stroke="#FFB000" stroke-opacity=".75"/><path d="M156.0 169.0 L118.0 192.0" stroke="#FFB000" stroke-opacity=".75"/><path d="M156.0 169.0 L80.0 169.0" stroke="#FFB000" stroke-opacity=".75"/><path d="M156.0 169.0 L156.0 131.0" stroke="#FFB000" stroke-opacity=".75"/><path d="M80.0 131.0 L118.0 108.0" stroke="#FFB000" stroke-opacity=".75"/><path d="M80.0 131.0 L118.0 192.0" stroke="#FFB000" stroke-opacity=".75"/><path d="M80.0 131.0 L80.0 169.0" stroke="#FFB000" stroke-opacity=".75"/><path d="M80.0 131.0 L156.0 131.0" stroke="#FFB000" stroke-opacity=".75"/><path d="M118.0 108.0 L80.0 169.0" stroke="#FFB000" stroke-opacity=".75"/><path d="M118.0 108.0 L156.0 131.0" stroke="#FFB000" stroke-opacity=".75"/><path d="M118.0 192.0 L80.0 169.0" stroke="#FFB000" stroke-opacity=".75"/><path d="M118.0 192.0 L156.0 131.0" stroke="#FFB000" stroke-opacity=".75"/><circle cx="118.0" cy="154.0" r="6" fill="#4FD1C5"/><circle cx="42.0" cy="192.0" r="6" fill="#4FD1C5"/><circle cx="118.0" cy="70.0" r="6" fill="#4FD1C5"/><circle cx="42.0" cy="108.0" r="6" fill="#4FD1C5"/><circle cx="194.0" cy="192.0" r="6" fill="#4FD1C5"/><circle cx="118.0" cy="230.0" r="6" fill="#4FD1C5"/><circle cx="194.0" cy="108.0" r="6" fill="#4FD1C5"/><circle cx="118.0" cy="146.0" r="6" fill="#4FD1C5"/><circle cx="156.0" cy="169.0" r="5" fill="#FFECBE"/><circle cx="80.0" cy="131.0" r="5" fill="#FFECBE"/><circle cx="118.0" cy="108.0" r="5" fill="#FFECBE"/><circle cx="118.0" cy="192.0" r="5" fill="#FFECBE"/><circle cx="80.0" cy="169.0" r="5" fill="#FFECBE"/><circle cx="156.0" cy="131.0" r="5" fill="#FFECBE"/><circle class="pulse" cx="118" cy="150" r="8" fill="#FFB000"/><text x="232.0" y="96.0" class="kick" text-anchor="start" >TARGET</text><text x="232.0" y="113.0" class="val" text-anchor="start" >Cs0.05FA0.79MA0.16Pb(I0.83Br0.17)3</text><text x="232.0" y="130.0" class="kick" text-anchor="start" >AT</text><text x="232.0" y="147.0" class="val" text-anchor="start" >1.2 M in 1 mL</text><text x="232.0" y="164.0" class="kick" text-anchor="start" >WITH</text><text x="232.0" y="181.0" class="val" text-anchor="start" >5% B-site excess, 30 mol% MACl</text><text x="232.0" y="198.0" class="kick" text-anchor="start" >READ</text><text x="232.0" y="215.0" class="val" text-anchor="start" >what to weigh, what to pipette</text><text x="34.0" y="224.0" class="ax" text-anchor="start" style="fill:#4FD1C5">A</text><text x="48.0" y="224.0" class="ax" text-anchor="start" style="fill:#FFB000">B</text><text x="62.0" y="224.0" class="ax" text-anchor="start" style="fill:#FFECBE">X</text></g>
+<rect class="cover" x="24" y="70" width="552" height="162"/>
+<g fill="none" stroke="#201C12"><path d="M70.0 70 V232"/><path d="M116.0 70 V232"/><path d="M162.0 70 V232"/><path d="M208.0 70 V232"/><path d="M254.0 70 V232"/><path d="M300.0 70 V232"/><path d="M346.0 70 V232"/><path d="M392.0 70 V232"/><path d="M438.0 70 V232"/><path d="M484.0 70 V232"/><path d="M530.0 70 V232"/><path d="M24 110.5 H576"/><path d="M24 151.0 H576"/><path d="M24 191.5 H576"/></g>
+<path class="beam" d="M24 70 V232"/>
+</g>
+<rect x="24" y="70" width="552" height="162" fill="none" stroke="#2E2818"/>
+<text x="24.0" y="262.0" class="desc" text-anchor="start" >Turns ABX3 compositions and donor:acceptor blends into</text><text x="24.0" y="283.0" class="desc" text-anchor="start" >the masses you weigh and the volumes you pipette.</text><text x="24.0" y="312.0" class="tag" text-anchor="start" >TKINTER · NOTHING TO INSTALL · CO-AUTHORED</text>
+</svg>
