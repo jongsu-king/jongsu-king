@@ -8,8 +8,6 @@
 
 I write analysis software for thin-film solar cells, mostly perovskite and organic. A few projects wandered off from that, among them a monitor for the Southern Ocean and a golf app for iPhone.
 
-박막 태양전지, 주로 페로브스카이트와 유기 태양전지 분석 소프트웨어를 만듭니다. 남극해 모니터링 앱이랑 아이폰 골프 앱도 있어요.
-
 <p align="center">
   <a href="https://github.com/jongsu-king/physiscore"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-a-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-a-light.svg"><img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-a-light.svg" width="270" alt="a: AM1.5G solar spectrum, shaded above a 1.48 eV band gap"></picture></a>
   <a href="https://github.com/jongsu-king/xrd-analyzer"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-b-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-b-light.svg"><img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-b-light.svg" width="270" alt="b: synthetic nanocrystalline fcc diffraction pattern with indexed peaks"></picture></a>
