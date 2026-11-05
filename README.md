@@ -23,13 +23,15 @@ I write analysis software for thin-film solar cells, mostly perovskite and organ
 
 #### Software
 
-- **[Physiscore](https://github.com/jongsu-king/physiscore)** J-V, EQE, Abs, PL, Raman, FTIR, XRD, SEM and XPS in one program. Device numbers are calculated from the raw curve, not read from the instrument's summary block. [DOI](https://doi.org/10.5281/zenodo.22267588)
-- **[XRD Analyzer](https://github.com/jongsu-king/xrd-analyzer)** Peak fitting with uncertainties, Scherrer and Williamson-Hall. Leave out the instrument broadening and it answers `NOT_CALCULABLE`. [DOI](https://doi.org/10.5281/zenodo.23912324)
-- **[NMR Analyzer](https://github.com/jongsu-king/nmr-analyzer)** 1D and 2D spectra from Bruker, ACD/Labs and JCAMP-DX. Python standard library only. [DOI](https://doi.org/10.5281/zenodo.23682459)
-- **[Solution Preparation Calculator](https://github.com/jongsu-king/perovskite-opv-solution-calculator)** Type in `Cs0.05FA0.79MA0.16Pb(I0.83Br0.17)3` and read off what to weigh. Co-authored. [DOI](https://doi.org/10.5281/zenodo.23682461)
-- **[OPV-DB](https://github.com/jongsu-king/opv-db-based-on-literature)** 38,849 organic PV device records mined from the literature, derived from Qiu's OPV-DB (CC BY 4.0). [DOI](https://doi.org/10.5281/zenodo.23682463)
-- **[SUYA](https://github.com/jongsu-king/SUYA)** Collects sea temperature, salinity and air temperature around Antarctica from NOAA, HYCOM, Argo and others into SQLite and monthly Excel files.
-- **[SwingLab](https://github.com/jongsu-king/SwingLab)** Swing video with Vision pose, an experimental 240 fps launch monitor and a club catalog back to 2000. iPhone, 12 languages. [DOI](https://doi.org/10.5281/zenodo.23682465)
+| Project | What it does |
+|:---|:---|
+| **[Physiscore](https://github.com/jongsu-king/physiscore)**<br><sub>[DOI](https://doi.org/10.5281/zenodo.22267588)</sub> | J-V, EQE, Abs, PL, Raman, FTIR, XRD, SEM and XPS in one program. Device numbers are calculated from the raw curve, not read from the instrument's summary block. |
+| **[XRD Analyzer](https://github.com/jongsu-king/xrd-analyzer)**<br><sub>[Download](https://github.com/jongsu-king/xrd-analyzer/releases/latest) · [DOI](https://doi.org/10.5281/zenodo.23912324)</sub> | Peak fitting with uncertainties, Scherrer and Williamson-Hall. Leave out the instrument broadening and it answers `NOT_CALCULABLE`. |
+| **[NMR Analyzer](https://github.com/jongsu-king/nmr-analyzer)**<br><sub>[Download](https://github.com/jongsu-king/nmr-analyzer/releases/latest) · [DOI](https://doi.org/10.5281/zenodo.23682459)</sub> | 1D and 2D spectra from Bruker, ACD/Labs and JCAMP-DX. Python standard library only. |
+| **[Solution Preparation Calculator](https://github.com/jongsu-king/perovskite-opv-solution-calculator)**<br><sub>[DOI](https://doi.org/10.5281/zenodo.23682461)</sub> | Type in `Cs0.05FA0.79MA0.16Pb(I0.83Br0.17)3` and read off what to weigh. Co-authored. |
+| **[OPV-DB](https://github.com/jongsu-king/opv-db-based-on-literature)**<br><sub>[DOI](https://doi.org/10.5281/zenodo.23682463)</sub> | 38,849 organic PV device records mined from the literature, derived from Qiu's OPV-DB (CC BY 4.0). |
+| **[SUYA](https://github.com/jongsu-king/SUYA)**<br><sub>[Download](https://github.com/jongsu-king/SUYA/releases/latest)</sub> | Collects sea temperature, salinity and air temperature around Antarctica from NOAA, HYCOM, Argo and others into SQLite and monthly Excel files. |
+| **[SwingLab](https://github.com/jongsu-king/SwingLab)**<br><sub>[DOI](https://doi.org/10.5281/zenodo.23682465)</sub> | Swing video with Vision pose, an experimental 240 fps launch monitor and a club catalog back to 2000. iPhone, 12 languages. |
 
 <details>
 <summary>Screenshots</summary>
@@ -48,8 +50,8 @@ I write analysis software for thin-film solar cells, mostly perovskite and organ
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/activity-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/activity-light.svg">
-    <img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/activity-light.svg" width="100%" alt="The last 26 weeks of contributions as a dot-matrix calendar, above a stick spectrum on the same time axis">
+    <img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/activity-light.svg" width="100%" alt="g: the last 16 weeks of contributions as a dot-matrix calendar, above a stick spectrum on the same time axis. h: totals for the last 12 months and commits per repository as dot-matrix meters.">
   </picture>
 </p>
 
-<sub>All of it is plotted by the <a href="https://github.com/jongsu-king/jongsu-king/tree/main/scripts">scripts</a> in this repo.</sub>
+<sub><b>g</b> One dot per day, with the same days as sticks underneath. <b>h</b> Commits to public repositories, leaving out this one. All of it is plotted by the <a href="https://github.com/jongsu-king/jongsu-king/tree/main/scripts">scripts</a> in this repo.</sub>

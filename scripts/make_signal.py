@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Generate the activity figure from GitHub's GraphQL API, in both themes.
 
-The last 26 weeks of the contribution calendar as a dot-matrix panel, the same two
-instruments as the hero: an LED display in dark mode, halftone print on chart paper in
+Panel g is the last 16 weeks of the contribution calendar as a dot-matrix display, the same
+two instruments as the hero: an LED display in dark mode, halftone print on chart paper in
 light mode. Under it, on the same time axis, a stick spectrum with one line per active day.
 GitHub's own calendar sits further down the profile and shows the full year.
+
+Panel h is the year's totals, then commits per repository as dot-matrix meters.
 
 Every dot and stick is a day's real count. Private repositories are dropped from the
 commit list even when the token can see them, and the profile repository is named after
@@ -38,19 +40,31 @@ query($login: String!) {
   }
 }
 """
-WEEKS_SHOWN = 26
-W, H = 820, 372
-X0, X1 = 40, 812
-PITCH = (X1 - X0) / WEEKS_SHOWN
-PANEL_TOP = 2
+WEEKS_SHOWN = 16
+W, H = 820, 352
+X0, PITCH = 40, 30
+X1 = X0 + WEEKS_SHOWN * PITCH
+PANEL_TOP = 28
 PANEL_BOTTOM = PANEL_TOP + 7 * PITCH
 STICKS = (PANEL_BOTTOM + 18, PANEL_BOTTOM + 86)  # y of the tallest possible stick, y of the axis
+SIDE = (560, 812)  # x range of panel h
+METER_DOTS = 28
+METER_ROWS = 6
+METER_ROW_HEIGHT = 41
 CYCLE = 12  # seconds between beam passes
 SWEEP = 2.6  # seconds a pass takes
 
 PANELS = {
-    "dark": {"fill": "#0b0b09", "edge": "#2e2a1a", "grid": None, "off": "#272112"},
-    "light": {"fill": "#f8f3e7", "edge": "#e5bba4", "grid": "#f0ddcd", "off": None},
+    "dark": {"fill": "#0b0b09", "edge": "#2e2a1a", "grid": None, "off": "#272112", "meter_off": "#272112"},
+    "light": {"fill": "#f8f3e7", "edge": "#e5bba4", "grid": "#f0ddcd", "off": None, "meter_off": "#f3e4d7"},
+}
+# The names the README uses, where a repository's own name is too long for a meter's label.
+DISPLAY_NAMES = {
+    "perovskite-opv-solution-calculator": "Solution Calculator",
+    "opv-db-based-on-literature": "OPV-DB",
+    "nmr-analyzer": "NMR Analyzer",
+    "xrd-analyzer": "XRD Analyzer",
+    "physiscore": "Physiscore",
 }
 
 
@@ -97,6 +111,48 @@ def panel_background(panel):
     return out
 
 
+def heading(theme, x, letter, title):
+    return text(x, 16, letter, theme["ink"], 13, weight=700) + text(x + 16, 16, title, theme["ink"], 12.5)
+
+
+def side_panel(mode, theme, panel, calendar, repos):
+    x0, x1 = SIDE
+    counts = [d["contributionCount"] for w in calendar["weeks"] for d in w["contributionDays"]]
+    stats = (
+        (calendar["totalContributions"], "contributions"),
+        (sum(c > 0 for c in counts), "active days"),
+        (max(counts, default=0), "most in a day"),
+    )
+    out = heading(theme, x0, "h", "Last 12 months")
+    for i, (value, label) in enumerate(stats):
+        x = x0 + i * (x1 - x0) / 3
+        out += text(x, PANEL_TOP + 26, str(value), theme["accent"], 28, weight=600)
+        out += text(x, PANEL_TOP + 44, label, theme["sub"], 11.5)
+
+    shown = repos[:METER_ROWS]
+    top = max((n for _, n in shown), default=1)
+    pitch = (x1 - x0 - 6) / (METER_DOTS - 1)
+    off, lit, bloom = "", "", ""
+    y = PANEL_TOP + 76
+    for name, n in shown:
+        out += text(x0, y, DISPLAY_NAMES.get(name, name), theme["ink"], 12.5)
+        out += text(x1, y, str(n), theme["sub"], 12.5, "end")
+        filled = max(1, round(n / top * METER_DOTS))
+        for i in range(METER_DOTS):
+            cx, cy = x0 + 3 + i * pitch, y + 10
+            if i < filled:
+                lit += f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="3.1"/>'
+                bloom += f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="5"/>'
+            else:
+                off += f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="2.6"/>'
+        y += METER_ROW_HEIGHT
+    out += f'<g fill="{panel["meter_off"]}">{off}</g>'
+    if mode == "dark":
+        out += f'<g filter="url(#bloom)" fill="{theme["accent"]}" opacity=".4">{bloom}</g>'
+    out += f'<g fill="{ramp_color(theme, 0.78)}">{lit}</g>'
+    return out
+
+
 def activity(mode, theme, data, user, today):
     calendar = data["contributionCalendar"]
     panel = PANELS[mode]
@@ -134,6 +190,7 @@ def activity(mode, theme, data, user, today):
             dots += f'<circle class="lit" style="animation-delay:{delay:.2f}s" cx="{cx:.1f}" cy="{cy:.1f}" r="{r:.1f}" fill="{fill}"/>'
 
     body = '<defs><filter id="bloom" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4.5"/></filter></defs>'
+    body += heading(theme, 2, "g", f"Contributions, last {WEEKS_SHOWN} weeks")
     body += panel_background(panel)
     for row, name in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
         body += text(X0 - 8, PANEL_TOP + (row + 0.5) * PITCH + 4, name, theme["sub"], 11.5, "end")
@@ -175,9 +232,7 @@ def activity(mode, theme, data, user, today):
         key=lambda r: -r[1],
     )
     summary = f"{calendar['totalContributions']} contributions on {active_days} days in the last 12 months."
-    body += text(X0, H - 24, summary, theme["ink"], 13)
-    if repos:
-        body += text(X0, H - 6, "Commits: " + ", ".join(f"{name} {n}" for name, n in repos[:5]), theme["sub"], 12.5)
+    body += side_panel(mode, theme, panel, calendar, repos)
     body += f'<path class="beam" d="M{X0} {PANEL_TOP} V{y1:.1f}" stroke="{theme["accent"]}"/>'
     return document(W, H, theme, body, summary, sweep_style())
 
