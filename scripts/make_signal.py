@@ -8,6 +8,10 @@ GitHub's own calendar sits further down the profile and shows the full year.
 
 Panel h is the year's totals, then commits per repository as dot-matrix meters.
 
+Panel i is its own figure: one trace per repository, stacked the way a series of diffraction
+patterns is, so a new public repository adds a trace by itself. Each day's commits are drawn
+as a Gaussian peak, with height going as the square root of the count.
+
 Every dot and stick is a day's real count. Private repositories are dropped from the
 commit list even when the token can see them, and the profile repository is named after
 the user and isn't one of the projects.
@@ -32,9 +36,9 @@ query($login: String!) {
         totalContributions
         weeks { contributionDays { date contributionCount } }
       }
-      commitContributionsByRepository(maxRepositories: 10) {
+      commitContributionsByRepository(maxRepositories: 25) {
         repository { name isPrivate }
-        contributions { totalCount }
+        contributions(first: 100) { totalCount nodes { occurredAt commitCount } }
       }
     }
   }
@@ -58,13 +62,15 @@ PANELS = {
     "dark": {"fill": "#0b0b09", "edge": "#2e2a1a", "grid": None, "off": "#272112", "meter_off": "#272112"},
     "light": {"fill": "#f8f3e7", "edge": "#e5bba4", "grid": "#f0ddcd", "off": None, "meter_off": "#f3e4d7"},
 }
-# The names the README uses, where a repository's own name is too long for a meter's label.
+STACK_X = (212, 812)  # x range of panel i's traces
+STACK_PANEL_TOP = 28
+STACK_PITCH = 27  # y distance between baselines
+STACK_AMPLITUDE = 46  # height of the tallest peak
+STACK_MAX_ROWS = 14
+# The names the README's software table uses.
 DISPLAY_NAMES = {
-    "perovskite-opv-solution-calculator": "Solution Calculator",
-    "opv-db-based-on-literature": "OPV-DB",
-    "nmr-analyzer": "NMR Analyzer",
-    "xrd-analyzer": "XRD Analyzer",
-    "physiscore": "Physiscore",
+    name: info["title"].replace("&nbsp;", " ")
+    for name, info in json.loads((Path(__file__).parent / "projects.json").read_text(encoding="utf-8"))["projects"].items()
 }
 
 
@@ -89,9 +95,8 @@ def nice_ticks(value):
     return value, [0, value]
 
 
-def sweep_style():
+def sweep_style(distance=X1 - X0):
     share = SWEEP / CYCLE * 100
-    distance = X1 - X0
     return (
         f".beam{{stroke-width:1.5;opacity:0;animation:beam {CYCLE}s linear infinite}}"
         f"@keyframes beam{{0%{{transform:translateX(0);opacity:.8}}{share:.1f}%{{transform:translateX({distance}px);opacity:.8}}"
@@ -113,6 +118,86 @@ def panel_background(panel):
 
 def heading(theme, x, letter, title):
     return text(x, 16, letter, theme["ink"], 13, weight=700) + text(x + 16, 16, title, theme["ink"], 12.5)
+
+
+def public_commits(data, user):
+    """Commit contributions to public repositories other than the profile repository, busiest first."""
+    return sorted(
+        (r for r in data["commitContributionsByRepository"]
+         if not r["repository"]["isPrivate"] and r["repository"]["name"] != user),
+        key=lambda r: -r["contributions"]["totalCount"],
+    )
+
+
+def trace_points(x0, x1, base, peaks, sigma):
+    """Sample a sum of Gaussian peaks from x0 to x1, leaving out the middle of flat runs."""
+    samples = []
+    x = x0
+    while x <= x1:
+        y = base - sum(h * math.exp(-0.5 * ((x - px) / sigma) ** 2) for px, h in peaks)
+        samples.append((x, round(y, 1)))
+        x += 1.5
+    kept = [p for i, p in enumerate(samples) if i in (0, len(samples) - 1) or not samples[i - 1][1] == p[1] == samples[i + 1][1]]
+    return "M" + " L".join(f"{x:.1f} {y:.1f}" for x, y in kept)
+
+
+def stacked(mode, theme, data, user, today):
+    panel = PANELS[mode]
+    rows = []
+    for r in public_commits(data, user)[:STACK_MAX_ROWS]:
+        days = {dt.date.fromisoformat(n["occurredAt"][:10]): n["commitCount"] for n in r["contributions"]["nodes"]}
+        if days:
+            rows.append((min(days), r["repository"]["name"], days))
+    rows.sort(key=lambda row: row[0])  # earliest on top; the sort is stable, so ties stay busiest first
+    if not rows:
+        return document(W, 40, theme, "", "No public commits in the last 12 months.")
+
+    x0, x1 = STACK_X
+    start = rows[0][0] - dt.timedelta(days=6)
+    span = (today - start).days + 4
+    per_day = (x1 - x0) / span
+    sigma = max(3.2, 0.5 * per_day)
+    fx = lambda date: x0 + (date - start).days * per_day
+    top_count = max(max(days.values()) for _, _, days in rows)
+    first_base = STACK_PANEL_TOP + STACK_AMPLITUDE + 10
+    bottom = first_base + (len(rows) - 1) * STACK_PITCH + 12
+    height = bottom + 26
+
+    body = '<defs><filter id="glow" x="-5%" y="-40%" width="110%" height="180%"><feGaussianBlur stdDeviation="2.4"/></filter></defs>'
+    body += heading(theme, 2, "i", "Commits per repository")
+    body += f'<rect x="{x0}" y="{STACK_PANEL_TOP}" width="{x1 - x0}" height="{bottom - STACK_PANEL_TOP}" rx="{4 if panel["grid"] is None else 0}" fill="{panel["fill"]}"/>'
+
+    months = []
+    day = start
+    while (day - start).days <= span:
+        if day.day == 1:
+            months.append(day)
+        day += dt.timedelta(days=1)
+    if panel["grid"]:
+        lines = "".join(f"M{x:.1f} {STACK_PANEL_TOP} V{bottom}" for x in (x0 + 30 * i for i in range(1, int((x1 - x0) // 30) + 1)))
+        lines += "".join(f"M{x0} {y} H{x1}" for y in range(STACK_PANEL_TOP + 30, bottom, 30))
+        body += f'<path d="{lines}" stroke="{panel["grid"]}" fill="none"/>'
+    else:
+        lines = "".join(f"M{fx(m):.1f} {STACK_PANEL_TOP} V{bottom}" for m in months)
+        body += f'<path d="{lines}" stroke="{panel["off"]}" fill="none"/>'
+
+    for i, (_, name, days) in enumerate(rows):
+        base = first_base + i * STACK_PITCH
+        peaks = [(fx(date), STACK_AMPLITUDE * math.sqrt(count / top_count)) for date, count in days.items()]
+        line = trace_points(x0, x1, base, peaks, sigma)
+        closed = f"{line} L{x1} {base} L{x0} {base} Z"
+        body += f'<path d="{closed}" fill="{panel["fill"]}"/><path d="{closed}" fill="{theme["accent"]}" fill-opacity=".16"/>'
+        if mode == "dark":
+            body += f'<path d="{line}" fill="none" stroke="{theme["accent"]}" stroke-width="2.4" opacity=".55" filter="url(#glow)"/>'
+        body += f'<path d="{line}" fill="none" stroke="{ramp_color(theme, 0.76)}" stroke-width="1.3" stroke-linejoin="round"/>'
+        body += text(x0 - 10, base + 4, DISPLAY_NAMES.get(name, name), theme["ink"], 12.5, "end")
+
+    for month in months:
+        body += f'<path d="M{fx(month):.1f} {bottom} v4" stroke="{theme["axis"]}"/>' + text(fx(month), bottom + 18, f"{month:%b}", theme["sub"], 12, "middle")
+    body += f'<path d="M{x0} {bottom} H{x1}" stroke="{theme["axis"]}"/>'
+    body += f'<path class="beam" d="M{x0} {STACK_PANEL_TOP} V{bottom}" stroke="{theme["accent"]}"/>'
+    label = f"Commits per day for {len(rows)} public repositories, one stacked trace each."
+    return document(W, height, theme, body, label, sweep_style(x1 - x0))
 
 
 def side_panel(mode, theme, panel, calendar, repos):
@@ -226,11 +311,7 @@ def activity(mode, theme, data, user, today):
             x = stick_x(date)
             body += f'<path d="M{x:.1f} {y1:.1f} v4" stroke="{theme["axis"]}"/>' + text(x, y1 + 18, f"{date:%b}", theme["sub"], 12, "middle")
 
-    repos = sorted(
-        ((r["repository"]["name"], r["contributions"]["totalCount"]) for r in data["commitContributionsByRepository"]
-         if not r["repository"]["isPrivate"] and r["repository"]["name"] != user),
-        key=lambda r: -r[1],
-    )
+    repos = [(r["repository"]["name"], r["contributions"]["totalCount"]) for r in public_commits(data, user)]
     summary = f"{calendar['totalContributions']} contributions on {active_days} days in the last 12 months."
     body += side_panel(mode, theme, panel, calendar, repos)
     body += f'<path class="beam" d="M{X0} {PANEL_TOP} V{y1:.1f}" stroke="{theme["accent"]}"/>'
@@ -244,6 +325,7 @@ def main(user, out):
     today = dt.datetime.now(dt.timezone.utc).date()
     for mode, theme in THEMES.items():
         (out / f"activity-{mode}.svg").write_text(activity(mode, theme, data, user, today), encoding="utf-8")
+        (out / f"stack-{mode}.svg").write_text(stacked(mode, theme, data, user, today), encoding="utf-8")
 
 
 if __name__ == "__main__":

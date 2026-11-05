@@ -4,11 +4,12 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: "23 */6 * * *"
+    - cron: "23 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: profile-assets
@@ -20,7 +21,28 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Generate activity figure
+      # GitHub switches off scheduled workflows after 60 days without repository activity.
+      - name: Keep the schedule enabled
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api -X PUT "repos/$GITHUB_REPOSITORY/actions/workflows/profile-assets.yml/enable"
+
+      - name: Update the software table
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/update_readme.py "$GITHUB_REPOSITORY_OWNER" README.md
+
+      # A push made with GITHUB_TOKEN doesn't start another run of this workflow.
+      - name: Commit the table if it changed
+        run: |
+          git diff --quiet README.md && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -qam "Update the software table"
+          git pull -q --rebase origin main
+          git push -q origin HEAD:main
+
+      - name: Generate activity figures
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/make_signal.py "$GITHUB_REPOSITORY_OWNER" dist

@@ -1,0 +1,33 @@
+{
+  "hidden": [],
+  "projects": {
+    "physiscore": {
+      "title": "Physiscore",
+      "blurb": "J-V, EQE, Abs, PL, Raman, FTIR, XRD, SEM and XPS in one program. Device numbers are calculated from the raw curve, not read from the instrument's summary block."
+    },
+    "xrd-analyzer": {
+      "title": "XRD Analyzer",
+      "blurb": "Peak fitting with uncertainties, Scherrer and Williamson-Hall. Leave out the instrument broadening and it answers `NOT_CALCULABLE`."
+    },
+    "nmr-analyzer": {
+      "title": "NMR Analyzer",
+      "blurb": "1D and 2D spectra from Bruker, ACD/Labs and JCAMP-DX. Python standard library only."
+    },
+    "perovskite-opv-solution-calculator": {
+      "title": "Solution&nbsp;Preparation&nbsp;Calculator",
+      "blurb": "Type in `Cs0.05FA0.79MA0.16Pb(I0.83Br0.17)3` and read off what to weigh. Co-authored."
+    },
+    "opv-db-based-on-literature": {
+      "title": "OPV-DB",
+      "blurb": "38,849 organic PV device records mined from the literature, derived from Qiu's OPV-DB (CC BY 4.0)."
+    },
+    "SUYA": {
+      "title": "SUYA",
+      "blurb": "Collects sea temperature, salinity and air temperature around Antarctica from NOAA, HYCOM, Argo and others into SQLite and monthly Excel files."
+    },
+    "SwingLab": {
+      "title": "SwingLab",
+      "blurb": "Swing video with Vision pose, an experimental 240 fps launch monitor and a club catalog back to 2000. iPhone, 12 languages."
+    }
+  }
+}
