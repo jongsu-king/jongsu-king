@@ -2,13 +2,18 @@
 """Render assets/hero-{dark,light}.gif: one powder pattern on two period instruments.
 
 Dark mode is an oscilloscope, light mode a chart recorder with a dot-matrix head. The
-pattern is calculated, not decorative: cubic alpha-FAPbI3 from its structure factors.
+pattern is calculated, not decorative: cubic alpha-FAPbI3 from its structure factors. The
+strip above it is the same calculation as Debye-Scherrer arcs, on a detector or on film,
+lined up so each arc crosses the strip's centre at its peak's 2-theta.
 
 The beam reveals a pre-rendered finished sheet column by column, so every frame is a
 cheap crop-and-paste and the GIF only stores the band that changed.
 
+Also writes assets/avatar.png: the same reflections as full rings on a 2D detector.
+
 Usage: make_hero.py OUTPUT_DIR   (needs Pillow; only run by hand, never in CI)
 """
+import functools
 import itertools
 import math
 import random
@@ -17,9 +22,10 @@ from pathlib import Path
 
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
-W, H = 1280, 440
+W, H = 1280, 450
 S = 2  # layers are drawn at 2x, then downsampled, for clean anti-aliasing
-PLOT = (56, 188, 1224, 368)  # x0, y0, x1, y1
+STRIP = (56, 128, 1224, 204)  # x0, y0, x1, y1
+PLOT = (56, 214, 1224, 392)
 TWO_THETA = (10.0, 52.0)
 MENLO = "/System/Library/Fonts/Menlo.ttc"
 HEADER = ["α-FAPbI3   Pm-3m", "a = 6.36 Å   Cu Kα", "simulated pattern"]
@@ -37,7 +43,7 @@ GLYPHS = {
 }
 TITLE = "JONGSU-KING"
 PITCH = 11
-TITLE_XY = (58, 62)
+TITLE_XY = (58, 50)
 
 DARK = {
     "name": "dark", "bg": (11, 11, 9), "minor": (28, 26, 18), "major": (46, 41, 26), "off_dot": (29, 25, 13),
@@ -108,7 +114,7 @@ def trace(peaks):
         v = 0.018 + 0.022 * math.exp(-(((t - 24) / 8) ** 2))
         for _, c, h in peaks:
             d = (t - c) / (fwhm / 2)
-            v += h * 0.9 * (0.5 / (1 + d * d) + 0.5 * math.exp(-math.log(2) * d * d))
+            v += h * 0.86 * (0.5 / (1 + d * d) + 0.5 * math.exp(-math.log(2) * d * d))
         v += rng.gauss(0, 0.0035 + 0.006 * math.sqrt(max(v, 0)))
         out.append((px, y1 - max(0.0, v) * (y1 - y0)))
     return out
@@ -145,6 +151,7 @@ def blank_sheet(t):
         for i in range(5):
             y = y0 + (y1 - y0) * i / 4
             d.line(scaled(x0, y, x1, y), fill=t["minor"], width=S)
+        d.rectangle(scaled(*STRIP), fill=(6, 6, 5), outline=t["major"], width=S)
     d.line(scaled(x0, y1, x1, y1), fill=t["text"] if t["name"] == "light" else t["major"], width=S)
     for deg in range(int(TWO_THETA[0]), int(TWO_THETA[1]) + 1):
         tick = 8 if deg % 5 == 0 else 4
@@ -158,6 +165,43 @@ def blank_sheet(t):
         for x, y, _ in title_dots():
             d.ellipse(scaled(x - 3.8, y - 3.8, x + 3.8, y + 3.8), fill=t["off_dot"])
     return img
+
+
+def smooth_noise(rng, n, lo, hi):
+    """Slowly varying grain statistics along a ring: real powder is never perfectly even."""
+    raw = [rng.uniform(lo, hi) for _ in range(n)]
+    return [(raw[i - 1] + raw[i] + raw[(i + 1) % n]) / 3 for i in range(n)]
+
+
+@functools.lru_cache(maxsize=1)
+def film_arcs():
+    """Debye-Scherrer arcs as an L mask, bending the way they do on a cylindrical film.
+
+    An arc leaves the equator by y^2 / (2 R tan 2-theta), so low angles curve hardest and
+    high angles straighten out. R is shorter than the strip's 2-theta scale implies, which
+    exaggerates the curve enough to read at this height.
+    """
+    x0, y0, x1, y1 = STRIP
+    cy = (y0 + y1) / 2
+    film_radius = 300
+    rng = random.Random(5)
+    rings = []
+    for _, c, h in reflections():
+        rings.append((fx(c), 2 * film_radius * math.tan(math.radians(c)), h ** 0.55, smooth_noise(rng, 200, 0.45, 1.15)))
+    mask = Image.new("L", (W * S, H * S), 0)
+    px = mask.load()
+    for j in range((y0 + 1) * S, (y1 - 1) * S):
+        y = j / S
+        row = int((y - y0) / (y1 - y0) * 199)
+        for i in range((x0 + 1) * S, (x1 - 1) * S):
+            x = i / S
+            v = 0.035 + 0.13 * math.exp(-(x - x0) / 240)
+            for centre, bend, strength, grain in rings:
+                d = x - centre + (y - cy) ** 2 / bend
+                if abs(d) < 7:
+                    v += strength * grain[row] * math.exp(-0.5 * (d / 1.7) ** 2)
+            px[i, j] = min(255, int(v * rng.uniform(0.72, 1.28) * 255))
+    return mask
 
 
 def ink_layers(t, peaks):
@@ -195,8 +239,16 @@ def ink_layers(t, peaks):
     d = ImageDraw.Draw(header)
     for i, row in enumerate(HEADER):
         width = d.textlength(row, font=font(14)) / S
-        d.text(scaled(PLOT[2] - width, 62 + i * 25), row, font=font(14), fill=255)
-    return [(t["title"], title, 7, 0.5), (t["trace"], line, 4, 0.55), (t["label"], labels, 0, 0), (t["text"], header, 0, 0)]
+        d.text(scaled(PLOT[2] - width, 50 + i * 25), row, font=font(14), fill=255)
+    layers = [(t["title"], title, 7, 0.5), (t["trace"], line, 4, 0.55), (t["label"], labels, 0, 0), (t["text"], header, 0, 0)]
+    if t["name"] == "light":
+        # A strip of developed film laid on the chart: pale base, dark silver arcs.
+        base = Image.new("L", size, 0)
+        edge = Image.new("L", size, 0)
+        ImageDraw.Draw(base).rectangle(scaled(*STRIP), fill=255)
+        ImageDraw.Draw(edge).rectangle(scaled(*STRIP), outline=255, width=S)
+        return [((232, 226, 210), base, 0, 0), ((160, 148, 126), edge, 0, 0), ((30, 28, 26), film_arcs(), 0, 0)] + layers
+    return [(t["trace"], film_arcs(), 3, 0.35)] + layers
 
 
 def apply_ink(base, layers, t, dx=0, color_override=None):
@@ -267,7 +319,7 @@ def build(t, path):
     sample = Image.new("RGB", (W, H * 3))
     for i, im in enumerate((off, done, hot)):
         sample.paste(im, (0, i * H))
-    palette = sample.quantize(colors=112, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
+    palette = sample.quantize(colors=144, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
 
     frames, delays = [], []
 
@@ -292,11 +344,47 @@ def build(t, path):
     frames[0].save(path, save_all=True, append_images=frames[1:], duration=delays, loop=0, disposal=1)
 
 
+def build_avatar(path, size=800):
+    """Full rings on a 2D detector, with the beam stop and its arm, on one black frame."""
+    rng = random.Random(9)
+    c = size / 2
+    per_deg = c / 52.5
+    rings = []
+    for _, two_theta, h in reflections():
+        rings.append((two_theta * per_deg, h ** 0.5, 2.2 + 1.8 * h, smooth_noise(rng, 720, 0.4, 1.2)))
+    ramp = [(7, 7, 6), (64, 42, 6), (178, 116, 0), (255, 176, 0), (255, 236, 190)]
+    arm = math.radians(38)
+    ax, ay = math.cos(arm), math.sin(arm)
+    img = Image.new("RGB", (size, size))
+    px = img.load()
+    for j in range(size):
+        for i in range(size):
+            x, y = i - c, j - c
+            r = math.hypot(x, y)
+            along, across = x * ax + y * ay, abs(-x * ay + y * ax)
+            if r < 40 or (along > 0 and across < 8):  # the beam stop shadows the detector
+                px[i, j] = (3, 3, 3)
+                continue
+            v = 0.03 + 0.16 * math.exp(-r / 120)
+            azimuth = int((math.atan2(y, x) + math.pi) / (2 * math.pi) * 719)
+            for radius, strength, width, grain in rings:
+                d = r - radius
+                if abs(d) < 16:
+                    v += strength * grain[azimuth] * math.exp(-0.5 * (d / width) ** 2)
+            v = min(1.0, v * rng.uniform(0.74, 1.26)) * (len(ramp) - 1)
+            k = min(int(v), len(ramp) - 2)
+            f = v - k
+            px[i, j] = tuple(int(ramp[k][n] + (ramp[k + 1][n] - ramp[k][n]) * f) for n in range(3))
+    img = img.filter(ImageFilter.GaussianBlur(0.7))
+    img.quantize(colors=200, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE).save(path, optimize=True)
+
+
 def main(out):
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     for name, t in (("dark", DARK), ("light", LIGHT)):
         build(t, out / f"hero-{name}.gif")
+    build_avatar(out / "avatar.png")
     for name, c, h in reflections():
         print(f"{name:>8}  2θ={c:6.2f}  I={h:5.3f}")
 

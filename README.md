@@ -2,7 +2,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/hero-dark.gif">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/hero-light.gif">
-    <img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/hero-light.gif" width="100%" alt="JONGSU-KING in dot-matrix above a simulated powder diffraction pattern of alpha-FAPbI3, drawn by an oscilloscope in dark mode and a chart recorder in light mode.">
+    <img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/hero-light.gif" width="100%" alt="JONGSU-KING in dot-matrix above a simulated powder diffraction pattern of alpha-FAPbI3 and its Debye-Scherrer arcs, drawn by an oscilloscope in dark mode and a chart recorder with a strip of film in light mode.">
   </picture>
 </p>
 
@@ -19,7 +19,7 @@ I write analysis software for thin-film solar cells, mostly perovskite and organ
   <a href="https://github.com/jongsu-king/SwingLab"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-f-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-f-light.svg"><img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-f-light.svg" width="270" alt="f: heat map of golf club models by brand and release year"></picture></a>
 </p>
 
-<sub>The pattern at the top is calculated for α-FAPbI3. The panels are plotted from files in the linked repos. <b>a</b> The ASTM G173 spectrum Physiscore integrates EQE against, shaded above the FAPbI3 band gap. <b>b</b> The synthetic example that ships with XRD Analyzer. <b>c</b> A teaching dataset from NMR Analyzer, with the OCH₂ quartet enlarged. <b>d</b> OPV-DB devices with Voc and Jsc in the plotted range; dashed lines are PCE at FF = 0.7. <b>e</b> NOAA OISST on 2 November 2026, cut from a SUYA screenshot. <b>f</b> SwingLab's catalog, the nine largest of 23 brands.</sub>
+<sub>The film strip and the pattern at the top are one calculation for α-FAPbI3, so each arc sits above its peak. The panels are plotted from files in the linked repos. <b>a</b> The ASTM G173 spectrum Physiscore integrates EQE against, shaded above the FAPbI3 band gap. <b>b</b> The synthetic example that ships with XRD Analyzer. <b>c</b> A teaching dataset from NMR Analyzer, with the OCH₂ quartet enlarged. <b>d</b> OPV-DB devices with Voc and Jsc in the plotted range; dashed lines are PCE at FF = 0.7. <b>e</b> NOAA OISST on 2 November 2026, cut from a SUYA screenshot. <b>f</b> SwingLab's catalog, the nine largest of 23 brands.</sub>
 
 #### Software
 
@@ -51,3 +51,5 @@ I write analysis software for thin-film solar cells, mostly perovskite and organ
     <img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/activity-light.svg" width="100%" alt="Contributions per day over the last 12 months, drawn as a stick spectrum">
   </picture>
 </p>
+
+<sub>All of it is plotted by the <a href="https://github.com/jongsu-king/jongsu-king/tree/main/scripts">scripts</a> in this repo.</sub>
