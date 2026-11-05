@@ -30,7 +30,7 @@ jobs:
       - name: Update the software table
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/update_readme.py "$GITHUB_REPOSITORY_OWNER" README.md
+        run: python3 scripts/update_readme.py "$GITHUB_REPOSITORY_OWNER" README.md dist
 
       # A push made with GITHUB_TOKEN doesn't start another run of this workflow.
       - name: Commit the table if it changed

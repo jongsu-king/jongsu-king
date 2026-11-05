@@ -69,7 +69,7 @@ STACK_AMPLITUDE = 46  # height of the tallest peak
 STACK_MAX_ROWS = 14
 # The names the README's software table uses.
 DISPLAY_NAMES = {
-    name: info["title"].replace("&nbsp;", " ")
+    name: info["title"]
     for name, info in json.loads((Path(__file__).parent / "projects.json").read_text(encoding="utf-8"))["projects"].items()
 }
 
