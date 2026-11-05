@@ -20,18 +20,10 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Generate stat cards
+      - name: Generate activity figure
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/make_signal.py "$GITHUB_REPOSITORY_OWNER" dist
-
-      - name: Generate contribution snake
-        uses: Platane/snk/svg-only@v3
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/snake-light.svg?color_snake=#B97A00&color_dots=#EBEDF0,#FFE3A3,#FFC94D,#E69A00,#9A6500
-            dist/snake-dark.svg?palette=github-dark&color_snake=#FFECBE&color_dots=#161310,#4A3706,#8A6200,#C98A00,#FFB000
 
       - name: Publish to the output branch
         working-directory: dist
@@ -42,5 +34,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -qm "Update profile assets"
+          git commit -qm "Update activity figure"
           git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" output

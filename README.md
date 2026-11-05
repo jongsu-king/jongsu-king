@@ -1,110 +1,53 @@
 <p align="center">
-  <img src="assets/hero.gif" width="100%" alt="An amber oscilloscope sweeps a spectrum with peaks labelled J-V, EQE, Abs, PL, Raman, FTIR, XRD, SEM, XPS, NMR and T-S, lighting up the name JONGSU-KING in dot-matrix.">
-</p>
-
-<p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2600&pause=1000&color=FFB000&center=true&vCenter=true&width=760&height=40&lines=Solar+cells,+from+raw+curve+to+device+parameter;38,849+OPV+devices+mined+from+the+literature;Watching+the+Southern+Ocean,+provenance+attached;Bragg+peaks,+NMR+multiplets,+a+240+fps+golf+swing;Six+DOIs.+Hundreds+of+tests.+No+made-up+numbers.">
-    <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2600&pause=1000&color=8A5A00&center=true&vCenter=true&width=760&height=40&lines=Solar+cells,+from+raw+curve+to+device+parameter;38,849+OPV+devices+mined+from+the+literature;Watching+the+Southern+Ocean,+provenance+attached;Bragg+peaks,+NMR+multiplets,+a+240+fps+golf+swing;Six+DOIs.+Hundreds+of+tests.+No+made-up+numbers.">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2600&pause=1000&color=FFB000&center=true&vCenter=true&width=760&height=40&lines=Solar+cells,+from+raw+curve+to+device+parameter;38,849+OPV+devices+mined+from+the+literature;Watching+the+Southern+Ocean,+provenance+attached;Bragg+peaks,+NMR+multiplets,+a+240+fps+golf+swing;Six+DOIs.+Hundreds+of+tests.+No+made-up+numbers." alt="Solar cells, from raw curve to device parameter. 38,849 OPV devices mined from the literature. Watching the Southern Ocean, provenance attached.">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/hero-dark.gif">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/hero-light.gif">
+    <img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/hero-light.gif" width="100%" alt="JONGSU-KING in dot-matrix above a simulated powder diffraction pattern of alpha-FAPbI3, drawn by an oscilloscope in dark mode and a chart recorder in light mode.">
   </picture>
 </p>
 
-<p align="center">
-  <a href="#user-content-citing"><img src="https://img.shields.io/badge/Zenodo_DOIs-6-FFB000?style=for-the-badge&labelColor=0C0B08&logo=zenodo&logoColor=FFB000" alt="6 Zenodo DOIs"></a>
-  <a href="#user-content-citing"><img src="https://img.shields.io/badge/Tests-590%2B-FFB000?style=for-the-badge&labelColor=0C0B08" alt="590+ tests"></a>
-  <img src="https://img.shields.io/badge/Ships_on-Win_%C2%B7_Mac_%C2%B7_Linux_%C2%B7_iOS-FFB000?style=for-the-badge&labelColor=0C0B08" alt="Ships on Windows, macOS, Linux and iOS">
-</p>
+I write analysis software for thin-film solar cells, mostly perovskite and organic. Two projects wandered off from that: a monitor for the Southern Ocean and a golf app for iPhone.
 
-I build scientific software that shows its work: analysis suites for thin-film solar cells, XRD and NMR, a literature-mined device database, and a desktop monitor for the Southern Ocean. Off the bench, an iPhone golf lab.
-
-실험 데이터를 다루는 과학 소프트웨어를 만듭니다. 원칙은 하나, **데이터가 뒷받침하지 못하는 숫자는 내놓지 않습니다.**
-
-### <kbd>CH1</kbd> Instruments
+박막 태양전지, 주로 페로브스카이트와 유기 태양전지 분석 소프트웨어를 만듭니다. 남극해 모니터링 앱이랑 아이폰 골프 앱도 있어요.
 
 <p align="center">
-  <a href="https://github.com/jongsu-king/physiscore"><img src="assets/card-physiscore.svg" width="400" alt="Physiscore: integrated analysis suite for thin-film photovoltaics"></a>
-  <a href="https://github.com/jongsu-king/xrd-analyzer"><img src="assets/card-xrd.svg" width="400" alt="XRD Analyzer: X-ray diffraction peak fitting and reports"></a>
-</p>
-<p align="center">
-  <a href="https://github.com/jongsu-king/nmr-analyzer"><img src="assets/card-nmr.svg" width="400" alt="NMR Analyzer: 1D and 2D NMR spectra"></a>
-  <a href="https://github.com/jongsu-king/SUYA"><img src="assets/card-suya.svg" width="400" alt="SUYA: Antarctic Ocean monitor"></a>
-</p>
-<p align="center">
-  <a href="https://github.com/jongsu-king/perovskite-opv-solution-calculator"><img src="assets/card-calculator.svg" width="400" alt="Solution Preparation Calculator for perovskite and organic solar cells"></a>
-  <a href="https://github.com/jongsu-king/opv-db-based-on-literature"><img src="assets/card-opvdb.svg" width="400" alt="OPV-DB: 38,849 literature-mined organic photovoltaic device records"></a>
-</p>
-<p align="center">
-  <a href="https://github.com/jongsu-king/SwingLab"><img src="assets/card-swinglab.svg" width="98.5%" alt="SwingLab: native iPhone golf lab"></a>
+  <a href="https://github.com/jongsu-king/physiscore"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-a-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-a-light.svg"><img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-a-light.svg" width="270" alt="a: AM1.5G solar spectrum, shaded above a 1.48 eV band gap"></picture></a>
+  <a href="https://github.com/jongsu-king/xrd-analyzer"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-b-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-b-light.svg"><img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-b-light.svg" width="270" alt="b: synthetic nanocrystalline fcc diffraction pattern with indexed peaks"></picture></a>
+  <a href="https://github.com/jongsu-king/nmr-analyzer"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-c-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-c-light.svg"><img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-c-light.svg" width="270" alt="c: proton NMR of ethyl acetate with the quartet enlarged"></picture></a>
+  <a href="https://github.com/jongsu-king/opv-db-based-on-literature"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-d-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-d-light.svg"><img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-d-light.svg" width="270" alt="d: histogram of open-circuit voltage against short-circuit current for organic solar cells in OPV-DB"></picture></a>
+  <a href="https://github.com/jongsu-king/SUYA"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-e-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-e-light.svg"><img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-e-light.svg" width="270" alt="e: south polar map of sea surface temperature from SUYA"></picture></a>
+  <a href="https://github.com/jongsu-king/SwingLab"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-f-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-f-light.svg"><img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/main/assets/fig-f-light.svg" width="270" alt="f: heat map of golf club models by brand and release year"></picture></a>
 </p>
 
-### <kbd>CH2</kbd> On the screen
+<sub>The pattern at the top is calculated for α-FAPbI3. The panels are plotted from files in the linked repos. <b>a</b> The ASTM G173 spectrum Physiscore integrates EQE against, shaded above the FAPbI3 band gap. <b>b</b> The synthetic example that ships with XRD Analyzer. <b>c</b> A teaching dataset from NMR Analyzer, with the OCH₂ quartet enlarged. <b>d</b> OPV-DB devices with Voc and Jsc in the plotted range; dashed lines are PCE at FF = 0.7. <b>e</b> NOAA OISST on 2 November 2026, cut from a SUYA screenshot. <b>f</b> SwingLab's catalog, the nine largest of 23 brands.</sub>
 
-<p align="center">
-  <a href="https://github.com/jongsu-king/SUYA"><img src="https://raw.githubusercontent.com/jongsu-king/SUYA/main/docs/images/en-1-water.png" width="98.5%" alt="SUYA showing a south-polar map of sea surface temperature with Argo floats"></a>
-  <br><sub><b>SUYA</b> · sea surface temperature around Antarctica, with every value's source and age beside it</sub>
-</p>
-<p align="center">
-  <a href="https://github.com/jongsu-king/xrd-analyzer"><img src="https://raw.githubusercontent.com/jongsu-king/xrd-analyzer/main/docs/images/screenshot-dark-ko.png" width="400" alt="XRD Analyzer fitting a synthetic nanocrystalline pattern, Korean interface"></a>
-  <a href="https://github.com/jongsu-king/nmr-analyzer"><img src="https://raw.githubusercontent.com/jongsu-king/nmr-analyzer/main/docs/01-main.png" width="400" alt="NMR Analyzer with two overlaid spectra, integrals and a multiplet table"></a>
-  <br><sub><b>XRD Analyzer</b> · fit and residuals on a labelled synthetic example &nbsp;|&nbsp; <b>NMR Analyzer</b> · overlaid spectra, integrals, multiplets</sub>
-</p>
+#### Software
+
+- **[Physiscore](https://github.com/jongsu-king/physiscore)** J-V, EQE, Abs, PL, Raman, FTIR, XRD, SEM and XPS in one program. Device numbers are calculated from the raw curve, not read from the instrument's summary block. [DOI](https://doi.org/10.5281/zenodo.22267588)
+- **[XRD Analyzer](https://github.com/jongsu-king/xrd-analyzer)** Peak fitting with uncertainties, Scherrer and Williamson-Hall. Leave out the instrument broadening and it answers `NOT_CALCULABLE`. [DOI](https://doi.org/10.5281/zenodo.23912324)
+- **[NMR Analyzer](https://github.com/jongsu-king/nmr-analyzer)** 1D and 2D spectra from Bruker, ACD/Labs and JCAMP-DX. Python standard library only. [DOI](https://doi.org/10.5281/zenodo.23682459)
+- **[Solution Preparation Calculator](https://github.com/jongsu-king/perovskite-opv-solution-calculator)** Type in `Cs0.05FA0.79MA0.16Pb(I0.83Br0.17)3` and read off what to weigh. Co-authored. [DOI](https://doi.org/10.5281/zenodo.23682461)
+- **[OPV-DB](https://github.com/jongsu-king/opv-db-based-on-literature)** 38,849 organic PV device records mined from the literature, derived from Qiu's OPV-DB (CC BY 4.0). [DOI](https://doi.org/10.5281/zenodo.23682463)
+- **[SUYA](https://github.com/jongsu-king/SUYA)** Collects sea temperature, salinity and air temperature around Antarctica from NOAA, HYCOM, Argo and others into SQLite and monthly Excel files.
+- **[SwingLab](https://github.com/jongsu-king/SwingLab)** Swing video with Vision pose, an experimental 240 fps launch monitor and a club catalog back to 2000. iPhone, 12 languages. [DOI](https://doi.org/10.5281/zenodo.23682465)
 
 <details>
-<summary><b>SwingLab in nine of its twelve languages</b></summary>
+<summary>Screenshots</summary>
 <br>
 <p align="center">
-  <a href="https://github.com/jongsu-king/SwingLab"><img src="https://raw.githubusercontent.com/jongsu-king/SwingLab/main/Docs/Screenshots/reviewer-2026-10-27/9-languages-dark-swing.jpg" width="80%" alt="SwingLab's swing screen in nine languages, dark mode"></a>
+  <a href="https://github.com/jongsu-king/SUYA"><img src="https://raw.githubusercontent.com/jongsu-king/SUYA/main/docs/images/en-1-water.png" width="98%" alt="SUYA with a south-polar sea surface temperature map and a table of readings"></a>
+  <a href="https://github.com/jongsu-king/xrd-analyzer"><img src="https://raw.githubusercontent.com/jongsu-king/xrd-analyzer/main/docs/images/screenshot-dark-ko.png" width="400" alt="XRD Analyzer fitting a synthetic pattern, Korean interface"></a>
+  <a href="https://github.com/jongsu-king/nmr-analyzer"><img src="https://raw.githubusercontent.com/jongsu-king/nmr-analyzer/main/docs/01-main.png" width="400" alt="NMR Analyzer with two overlaid spectra and an integral table"></a>
+  <a href="https://github.com/jongsu-king/SwingLab"><img src="https://raw.githubusercontent.com/jongsu-king/SwingLab/main/Docs/Screenshots/reviewer-2026-10-27/9-languages-dark-swing.jpg" width="80%" alt="SwingLab's swing screen in nine languages"></a>
 </p>
 </details>
 
-### <kbd>CH3</kbd> Signal
+#### Last 12 months
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/signal-spectrum.svg" width="98.5%" alt="Contribution spectrum: each day of contributions drawn as a diffraction peak">
-</p>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/signal-commits.svg" width="98.5%" alt="Commits per public repository in the last year">
-</p>
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=jongsu-king&background=0C0B08&border=2E2818&stroke=2E2818&ring=FFB000&fire=FFB000&currStreakNum=FFECBE&sideNums=FFB000&currStreakLabel=FFB000&sideLabels=A88034&dates=A88034&border_radius=14" width="400" alt="GitHub contribution streak">
-  <img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/signal-languages.svg" width="400" alt="Languages across public repositories, by bytes">
-</p>
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/snake-light.svg">
-    <img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/snake-dark.svg" width="98.5%" alt="A snake eating the contribution graph">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/activity-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/activity-light.svg">
+    <img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/activity-light.svg" width="100%" alt="Contributions per day over the last 12 months, drawn as a stick spectrum">
   </picture>
-</p>
-
-### <kbd>CH4</kbd> Toolchain
-
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=py,swift,qt,sqlite,bash,powershell,githubactions,github&theme=dark" alt="Python, Swift, Qt, SQLite, Bash, PowerShell, GitHub Actions, GitHub">
-</p>
-
-<a name="citing"></a>
-<details open>
-<summary><b>Citing and releases</b></summary>
-<br>
-
-| Project | Latest release | DOI | Tests |
-| --- | --- | --- | --- |
-| [Physiscore](https://github.com/jongsu-king/physiscore) | ![release](https://img.shields.io/github/v/release/jongsu-king/physiscore?style=flat-square&label=&color=FFB000) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22267588.svg)](https://doi.org/10.5281/zenodo.22267588) | — |
-| [XRD Analyzer](https://github.com/jongsu-king/xrd-analyzer) | ![release](https://img.shields.io/github/v/release/jongsu-king/xrd-analyzer?style=flat-square&label=&color=FFB000) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23912324.svg)](https://doi.org/10.5281/zenodo.23912324) | 294 |
-| [NMR Analyzer](https://github.com/jongsu-king/nmr-analyzer) | ![release](https://img.shields.io/github/v/release/jongsu-king/nmr-analyzer?style=flat-square&label=&color=FFB000) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23682459.svg)](https://doi.org/10.5281/zenodo.23682459) | 98 |
-| [Solution Preparation Calculator](https://github.com/jongsu-king/perovskite-opv-solution-calculator) | ![release](https://img.shields.io/github/v/release/jongsu-king/perovskite-opv-solution-calculator?style=flat-square&label=&color=FFB000) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23682461.svg)](https://doi.org/10.5281/zenodo.23682461) | — |
-| [OPV-DB](https://github.com/jongsu-king/opv-db-based-on-literature) | ![release](https://img.shields.io/github/v/release/jongsu-king/opv-db-based-on-literature?style=flat-square&label=&color=FFB000) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23682463.svg)](https://doi.org/10.5281/zenodo.23682463) | — |
-| [SwingLab](https://github.com/jongsu-king/SwingLab) | ![release](https://img.shields.io/github/v/release/jongsu-king/SwingLab?style=flat-square&label=&color=FFB000) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23682465.svg)](https://doi.org/10.5281/zenodo.23682465) | 85 + 40 |
-| [SUYA](https://github.com/jongsu-king/SUYA) | ![release](https://img.shields.io/github/v/release/jongsu-king/SUYA?style=flat-square&label=&color=FFB000) | — | 73 |
-
-</details>
-
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=jongsu-king&color=FFB000&style=flat-square&label=profile+views" alt="Profile views">
-</p>
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FFB000,100:4FD1C5&height=90&section=footer" width="100%" alt="">
 </p>
