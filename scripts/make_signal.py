@@ -31,6 +31,7 @@ query($login: String!) {
     }
     repositories(first: 100, privacy: PUBLIC, ownerAffiliations: OWNER, isFork: false) {
       nodes {
+        name
         languages(first: 10, orderBy: { field: SIZE, direction: DESC }) {
           edges { size node { name } }
         }
@@ -108,8 +109,9 @@ def spectrum_card(path, calendar, today):
          body=body, w=1224, h=346, plot=(x0 - 32, y0, x1, y1))
 
 
-def composition_card(path, repos, today):
-    rows = sorted(((r["repository"]["name"], r["contributions"]["totalCount"]) for r in repos if not r["repository"]["isPrivate"]), key=lambda r: -r[1])
+def composition_card(path, repos, today, skip):
+    public = (r for r in repos if not r["repository"]["isPrivate"] and r["repository"]["name"] != skip)
+    rows = sorted(((r["repository"]["name"], r["contributions"]["totalCount"]) for r in public), key=lambda r: -r[1])
     y0 = 70
     row_h = 30
     y1 = y0 + 14 + row_h * max(len(rows), 1)
@@ -124,13 +126,15 @@ def composition_card(path, repos, today):
         body += label(bar_x + width + 10, y + 16, str(n), "lab", "start", 'style="font-size:14px"')
     total = sum(n for _, n in rows)
     card(path, kick="LIVE SIGNAL", title="Commits by project", right=f"UPDATED {today:%Y-%m-%d}",
-         desc=[f"{total} commits to public repositories in the last year."], tags="",
+         desc=[f"{total} commits to public projects in the last year."], tags="",
          body=body, w=1224, h=y1 + 62, plot=(24, y0, 1200, y1))
 
 
-def languages_card(path, repos, today):
+def languages_card(path, repos, today, skip):
     sizes = {}
     for repo in repos:
+        if repo["name"] == skip:
+            continue
         for edge in repo["languages"]["edges"]:
             sizes[edge["node"]["name"]] = sizes.get(edge["node"]["name"], 0) + edge["size"]
     total = sum(sizes.values()) or 1
@@ -156,8 +160,9 @@ def main(user, out):
     data = user_data["contributionsCollection"]
     today = dt.datetime.now(dt.timezone.utc).date()
     spectrum_card(out / "signal-spectrum.svg", data["contributionCalendar"], today)
-    composition_card(out / "signal-commits.svg", data["commitContributionsByRepository"], today)
-    languages_card(out / "signal-languages.svg", user_data["repositories"]["nodes"], today)
+    # The profile repository is named after the user, and it isn't one of the projects.
+    composition_card(out / "signal-commits.svg", data["commitContributionsByRepository"], today, skip=user)
+    languages_card(out / "signal-languages.svg", user_data["repositories"]["nodes"], today, skip=user)
 
 
 if __name__ == "__main__":

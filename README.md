@@ -11,8 +11,8 @@
 </p>
 
 <p align="center">
-  <a href="#citing"><img src="https://img.shields.io/badge/Zenodo_DOIs-6-FFB000?style=for-the-badge&labelColor=0C0B08&logo=zenodo&logoColor=FFB000" alt="6 Zenodo DOIs"></a>
-  <a href="#citing"><img src="https://img.shields.io/badge/Tests-590%2B-FFB000?style=for-the-badge&labelColor=0C0B08" alt="590+ tests"></a>
+  <a href="#user-content-citing"><img src="https://img.shields.io/badge/Zenodo_DOIs-6-FFB000?style=for-the-badge&labelColor=0C0B08&logo=zenodo&logoColor=FFB000" alt="6 Zenodo DOIs"></a>
+  <a href="#user-content-citing"><img src="https://img.shields.io/badge/Tests-590%2B-FFB000?style=for-the-badge&labelColor=0C0B08" alt="590+ tests"></a>
   <img src="https://img.shields.io/badge/Ships_on-Win_%C2%B7_Mac_%C2%B7_Linux_%C2%B7_iOS-FFB000?style=for-the-badge&labelColor=0C0B08" alt="Ships on Windows, macOS, Linux and iOS">
 </p>
 
@@ -85,7 +85,7 @@ I build scientific software that shows its work: analysis suites for thin-film s
 </p>
 
 <a name="citing"></a>
-<details>
+<details open>
 <summary><b>Citing and releases</b></summary>
 <br>
 
