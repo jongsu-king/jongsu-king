@@ -35,6 +35,7 @@ I write analysis software for thin-film solar cells, mostly perovskite and organ
 | **[OpenAlex Corpus Harvester](https://github.com/jongsu-king/openalex-corpus-harvester)** <a href="https://doi.org/10.5281/zenodo.23970939"><img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/doi-10.5281-zenodo.23970939.svg" alt="DOI 10.5281/zenodo.23970939"></a><br>OpenAlex records into a local SQLite corpus, with PDFs extracted to Markdown and structured data. Keeps raw responses, checksums and validation results. Fetches only the PDF URLs it is given. Python 3.11+, MIT. |
 | **[anti-reverse-shield](https://github.com/jongsu-king/anti-reverse-shield)** <a href="https://doi.org/10.5281/zenodo.23970279"><img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/doi-10.5281-zenodo.23970279.svg" alt="DOI 10.5281/zenodo.23970279"></a><br>Defense-in-depth building blocks against automated reverse-engineering tooling (the Ghidra/IDA + Frida + MITM-proxy pipeline that AI RE agents automate). |
 | **[homebrew-suya](https://github.com/jongsu-king/homebrew-suya)**<br>Homebrew tap for SUYA, the Antarctic ocean temperature, salinity and air temperature collector |
+| **[xps-autofit-studio](https://github.com/jongsu-king/xps-autofit-studio)**<br>Automated, reproducible XPS peak fitting: physical constraints, model selection, batch processing, desktop app |
 
 <!-- repos:end -->
 
