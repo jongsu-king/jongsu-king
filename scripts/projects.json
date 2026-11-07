@@ -13,6 +13,10 @@
       "title": "NMR Analyzer",
       "blurb": "1D and 2D spectra from Bruker, ACD/Labs and JCAMP-DX. Python standard library only."
     },
+    "xps-autofit-studio": {
+      "title": "XPS AutoFit Studio",
+      "blurb": "Peak fitting with spin-orbit doublet constraints. AICc or BIC picks the number of components, but only among models that pass physical checks, and a close call is flagged as ambiguous. Command line and desktop app."
+    },
     "perovskite-opv-solution-calculator": {
       "title": "Solution Preparation Calculator",
       "blurb": "Type in <code>Cs0.05FA0.79MA0.16<wbr>Pb(I0.83Br0.17)3</code> and read off what to weigh. Co-authored."
