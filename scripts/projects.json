@@ -36,6 +36,10 @@
     "openalex-corpus-harvester": {
       "title": "OpenAlex Corpus Harvester",
       "blurb": "OpenAlex records into a local SQLite corpus, with PDFs extracted to Markdown and structured data. Keeps raw responses, checksums and validation results. Fetches only the PDF URLs it is given. Python 3.11+, MIT."
+    },
+    "anti-reverse-shield": {
+      "title": "anti-reverse-shield",
+      "blurb": "Anti-debug, Frida and inline-hook detection, integrity hashes and string encryption for native C/C++, Electron, Android and .NET, with a reference HMAC check for the server. The README says up front that none of it is a security boundary and documents how each piece is bypassed. MIT."
     }
   }
 }
