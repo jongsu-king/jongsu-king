@@ -17,6 +17,10 @@
       "title": "XPS AutoFit Studio",
       "blurb": "Peak fitting with spin-orbit doublet constraints. AICc or BIC picks the number of components, but only among models that pass physical checks, and a close call is flagged as ambiguous. Command line and desktop app."
     },
+    "profilometry-analyzer": {
+      "title": "Profilometry Analyzer",
+      "blurb": "Step height, ISO 21920-2 roughness and Stoney film stress from stylus profilometer scans. Points the stylus could not reach are found and reported, and `verify` repeats a saved analysis. Validated on synthetic data only so far. Desktop app and command line, MIT."
+    },
     "perovskite-opv-solution-calculator": {
       "title": "Solution Preparation Calculator",
       "blurb": "Type in <code>Cs0.05FA0.79MA0.16<wbr>Pb(I0.83Br0.17)3</code> and read off what to weigh. Co-authored."
