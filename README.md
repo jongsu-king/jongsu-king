@@ -38,6 +38,7 @@ I write analysis software for thin-film solar cells, mostly perovskite and organ
 | **[anti-reverse-shield](https://github.com/jongsu-king/anti-reverse-shield)** <a href="https://doi.org/10.5281/zenodo.23970279"><img src="https://raw.githubusercontent.com/jongsu-king/jongsu-king/output/doi-10.5281-zenodo.23970279.svg" alt="DOI 10.5281/zenodo.23970279"></a> <small>[Download](https://github.com/jongsu-king/anti-reverse-shield/releases/latest)</small><br>Anti-debug, Frida and inline-hook detection, integrity hashes and string encryption for native C/C++, Electron, Android and .NET, with a reference HMAC check for the server. The README says up front that none of it is a security boundary and documents how each piece is bypassed. MIT. |
 | **[homebrew-suya](https://github.com/jongsu-king/homebrew-suya)**<br>Homebrew tap for SUYA, the Antarctic ocean temperature, salinity and air temperature collector |
 | **[spectral-bench](https://github.com/jongsu-king/spectral-bench)** <small>[Download](https://github.com/jongsu-king/spectral-bench/releases/latest)</small><br>Desktop spectroscopy simulator with 3D optical ray tracing and measurement analysis |
+| **[yeobaek](https://github.com/jongsu-king/yeobaek)** <small>[Download](https://github.com/jongsu-king/yeobaek/releases/latest)</small><br>Python/Flet notes app with Google Drive sync, inline PDF and Excel previews, and LaTeX |
 
 <!-- repos:end -->
 
