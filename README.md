@@ -39,6 +39,7 @@ I write analysis software for thin-film solar cells, mostly perovskite and organ
 | **[homebrew-suya](https://github.com/jongsu-king/homebrew-suya)**<br>Homebrew tap for SUYA, the Antarctic ocean temperature, salinity and air temperature collector |
 | **[spectral-bench](https://github.com/jongsu-king/spectral-bench)** <small>[Download](https://github.com/jongsu-king/spectral-bench/releases/latest)</small><br>Desktop spectroscopy simulator with 3D optical ray tracing and measurement analysis |
 | **[yeobaek](https://github.com/jongsu-king/yeobaek)** <small>[Download](https://github.com/jongsu-king/yeobaek/releases/latest)</small><br>Python/Flet notes app with Google Drive sync, inline PDF and Excel previews, and LaTeX |
+| **[band-heater-pid](https://github.com/jongsu-king/band-heater-pid)**<br>아두이노 나노 밴드 히터 PID 컨트롤러: 펌웨어, 회로도, 3D 출력용 통, PC 기록 프로그램 |
 
 <!-- repos:end -->
 
