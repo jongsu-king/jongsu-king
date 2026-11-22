@@ -21,6 +21,10 @@
       "title": "Profilometry Analyzer",
       "blurb": "Step height, ISO 21920-2 roughness and Stoney film stress from stylus profilometer scans. Points the stylus could not reach are found and reported, and `verify` repeats a saved analysis. Validated on synthetic data only so far. Desktop app and command line, MIT."
     },
+    "spectral-bench": {
+      "title": "Spectral Bench",
+      "blurb": "Nine optical instruments simulated on editable 3D ray-traced benches: UV-Vis with an integrating sphere, PL, TRPL, Raman, FTIR, ellipsometry, transient absorption, THz-TDS and an array spectrometer. Each layout exports as a MATLAB script that retraces it. Signals are synthetic and need separate calibration before use with real measurements. macOS and Windows."
+    },
     "perovskite-opv-solution-calculator": {
       "title": "Solution Preparation Calculator",
       "blurb": "Type in <code>Cs0.05FA0.79MA0.16<wbr>Pb(I0.83Br0.17)3</code> and read off what to weigh. Co-authored."
