@@ -48,6 +48,10 @@
     "anti-reverse-shield": {
       "title": "anti-reverse-shield",
       "blurb": "Anti-debug, Frida and inline-hook detection, integrity hashes and string encryption for native C/C++, Electron, Android and .NET, with a reference HMAC check for the server. The README says up front that none of it is a security boundary and documents how each piece is bypassed. MIT."
+    },
+    "band-heater-pid": {
+      "title": "Band Heater PID Controller",
+      "blurb": "An Arduino Nano holding a 220 V, 400 W band heater at temperature: four type-T thermocouples on MAX31856, a solid-state relay time-proportioned over 2 s, and a safety relay. Firmware, KiCad schematic, a printable enclosure and a PC logger with live charts. The firmware passes a simulation on the PC and has not been verified on the real heater; the enclosure has not been printed. MIT."
     }
   }
 }
