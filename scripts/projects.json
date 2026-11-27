@@ -52,6 +52,10 @@
     "band-heater-pid": {
       "title": "Band Heater PID Controller",
       "blurb": "An Arduino Nano holding a 220 V, 400 W band heater at temperature: four type-T thermocouples on MAX31856, a solid-state relay time-proportioned over 2 s, and a safety relay. Firmware, KiCad schematic, a printable enclosure and a PC logger with live charts. The firmware passes a simulation on the PC and has not been verified on the real heater; the enclosure has not been printed. MIT."
+    },
+    "yeobaek": {
+      "title": "Yeobaek",
+      "blurb": "Notes kept in SQLite and usable offline, with notebooks, tags, search filters such as `tag:` and `is:task`, Markdown and LaTeX. Any file can be attached up to 64 MiB, and PDF pages, Excel cells and CSV tables are shown inside the note. Syncs through the Google Drive app-data folder with your own OAuth client, and a conflicting edit is kept for you to choose. macOS, Windows, Linux and Android; the Android build has been checked on an emulator only."
     }
   }
 }
